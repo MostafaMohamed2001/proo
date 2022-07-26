@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StorePostRequest_Reg;
 use App\Models\User;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
@@ -50,18 +51,16 @@ class UserController extends Controller
 
 
 
-    public function login(StorePostRequest $request)
+    public function login(StorePostRequest_Reg $request)
     {
-dd($request);
         if(!Auth::guard('web')->check()){
-            if(Auth::guard('web')->attempt(['email'=>$request->email,'password'=>$request->password])){
-  return redirect(route('THE_HOME'));
-}
-            else{
-                return redirect ()->back()->with(['fail'=>'ur not regester']);
-            }
-         }
-       }
+            if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])){
+                return Redirect(route('THE_HOME'));
+            }else{
+                return Redirect()->back()->with(['fail'=>'something is wrong']);
+            };
+        }
+    }
 
 
 
