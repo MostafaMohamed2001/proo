@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\testMail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {return Redirect()->intended("/main");});
+
+
+
+Route::get('send',function(){
+    Mail::to('mostafamohamed8828@gmail.com')->send(new testMail);
+    return response('sending done');
+});
+
+
+
+
+
+Route::get('/', function () {return Redirect()->intended("/main");});
+
 
 
 

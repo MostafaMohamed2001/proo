@@ -27,6 +27,8 @@ class StorePostRequest extends FormRequest
             'name.required'=>'يجد ادخال الأسم من فضلك',
             'email.required'=>'يجد ادخال الايميل من فضلك',
             'password.required'=>'يجد ادخال كلمه المرور من فضلك',
+
+
         ];
     }
     public function rules()
@@ -35,6 +37,8 @@ class StorePostRequest extends FormRequest
             'name'=>'required',
             'email'=>'required|email',
             'password'=>'required',
+
+
         ];
     }
 

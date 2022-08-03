@@ -40,7 +40,7 @@ class UserController extends Controller
 
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>Hash::make($request->Password)
+            'password'=>Hash::make($request->password)
 
         ]);
 
@@ -53,8 +53,9 @@ class UserController extends Controller
 
     public function login(StorePostRequest_Reg $request)
     {
-        if(!Auth::guard('web')->check()){
-            if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])){
+
+        if(!Auth::check()){
+            if(Auth::attempt($request->only('email','password'))){
                 return Redirect(route('THE_HOME'));
             }else{
                 return Redirect()->back()->with(['fail'=>'something is wrong']);

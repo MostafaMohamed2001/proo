@@ -16,7 +16,7 @@
                     <div class="alert alert-success">{{Session::get('success')}}</div>
                     @endif
                     @if(Session::has('fail'))
-                    <div class="alert alert-success">{{Session::get('fail')}}</div>
+                    <div class="alert alert-danger">{{Session::get('fail')}}</div>
                     @endif
 
 
@@ -41,6 +41,9 @@
                       @error('password')
                       <small class="form-text text-danger">{{$message}}</small>
                       @enderror
+                    </div>
+                    <div class="my-3">
+                        <a href="{{ route('register_user') }}" style="font-size: 15px">Don't have an account?</a>
                     </div>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
