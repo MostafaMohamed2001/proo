@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\testMail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('send',function(){
+    Mail::to('mostafamohamed8828@gmail.com')->send(new testMail);
+    return response('sending done');
 });
-Route::get('main','UserController@show')->name('THE_HOME');
 
 
 
-Route::get('register/user','UserController@RegisterView');
-Route::get('login/user','UserController@LoginView');
+
+
+Route::get('/', function () {return Redirect()->intended("/main");});
+
+
+
+Route::get('main','UserController@show')->middleware('CheckUser')->name('THE_HOME');
+
+Route::get('register/user','UserController@RegisterView')->name('register_user');
+Route::get('login/user','UserController@LoginView')->name('login_user');
 
 
 Route::post('Save','UserController@register')->name('Save.register.User');
