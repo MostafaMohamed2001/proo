@@ -26,6 +26,8 @@ class StorePostRequest extends FormRequest
        return [
             'name.required'=>'يجد ادخال الأسم من فضلك',
             'email.required'=>'يجد ادخال الايميل من فضلك',
+            'password.required'=>'يجد ادخال كلمه المرور من فضلك',
+
 
         ];
     }
@@ -34,7 +36,9 @@ class StorePostRequest extends FormRequest
         return [
             'name'=>'required',
             'email'=>'required|email',
-            
+            'password'=>'required',
+
+
         ];
     }
 

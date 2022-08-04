@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+
+Route::get('/', function () {return Redirect()->intended("/main");});
+
+
+
 Route::get('send',function(){
     Mail::to('mostafamohamed8828@gmail.com')->send(new testMail);
     return response('sending done');
@@ -25,6 +30,7 @@ Route::get('send',function(){
 
 
 Route::get('/', function () {return Redirect()->intended("/main");});
+
 
 
 
